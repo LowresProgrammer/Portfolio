@@ -1,0 +1,618 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins%3Awght%40100%3B200%3B300%3B400%3B500%3B600&display=swap%27%29%3B);
+* {
+    margin: 0%;
+    padding-top: 0%;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #b74b4b;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b74b4b;
+}
+
+/* navbar styling */
+
+nav {
+    width: 100%;
+    height: 10vh;
+}
+
+.nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #b74b4b;
+    text-shadow: 0 0 10px #b74b4b;
+}
+
+.hamburg, .cancel {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top : 10px;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+}
+
+.nav-container .links {
+    display: flex;
+}
+
+.nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.3s linear;
+}
+
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #b74b4b;
+    transition: 0.2s linear;
+}
+
+.nav-container .links a:hover::before{
+    width: 100%;
+}
+
+.nav-container .links a:hover{
+    color: #b74b4b;
+}
+
+.dropdown {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow: 0 0 20px black;
+    transition: 0.2 linear;
+}
+
+.dropdown .links a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items:center;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a:hover{
+    background-color: #b74b4b;
+}
+
+section {
+    width: 100%;
+    min-height: 90vh;
+}
+
+.section-wrapper {
+    width: 100%;
+}
+
+section .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 40px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section .main-container .image{
+    flex: 0 0 45%;
+    max-width: 520px;
+    height: 80vh;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 50px #b74b4b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.main-container .image:hover{
+    animation: animate 1.5s ease-in-out infinite;
+}
+
+.main-container .content {
+    flex: 1 1 45%;
+    color: white;
+    padding-right: 20px;
+}
+
+.main-container .content h1 {
+    /* slightly reduced but responsive heading */
+    font-size: clamp(2rem, 3.2vw + 1rem, 3rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.05;
+}
+
+.main-container .content h1 span {
+    color: #b74b4b;
+    text-shadow: 0 0 10px #b74b4b;
+}
+
+.main-container .content .typewriter {
+    /* increase typewriter size to better match the heading */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.main-container .content .typewriter-text {
+    display: inline-block;
+    color: #b74b4b;
+    min-width: 200px;
+    position: relative;
+    text-shadow: 0 0 6px rgba(183,75,75,0.75);
+    font-weight: 700;
+}
+
+.main-container .content .typewriter-text {
+    font-size: 2rem;
+}
+
+.main-container .content .typewriter-text::before {
+    content: "Web Developer";
+    display: inline-block;
+    animation: typewriter-words 20s ease-in-out infinite, glow 2.5s ease-in-out infinite;
+    text-shadow: 0 0 6px rgba(183,75,75,0.9);
+    font-weight: 700;
+}
+
+.main-container .content .typewriter-text::after {
+    /* inline blinking pipe cursor that follows the word */
+    content: "|";
+    display: inline-block;
+    margin-left: 8px;
+    color: #b74b4b;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(183,75,75,0.9);
+    animation: blink 0.8s step-end infinite, glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 4px rgba(183,75,75,0.6), 0 0 10px rgba(183,75,75,0.35); }
+    50% { text-shadow: 0 0 14px rgba(183,75,75,1), 0 0 26px rgba(183,75,75,0.65); }
+    100% { text-shadow: 0 0 4px rgba(183,75,75,0.6), 0 0 10px rgba(183,75,75,0.35); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 6px rgba(183,75,75,0.5); }
+    50% { box-shadow: 0 0 18px rgba(183,75,75,1); }
+    100% { box-shadow: 0 0 6px rgba(183,75,75,0.5); }
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+
+.typing-text span{
+    position:relative;
+}
+
+.typing-text span::before{
+    content: "Software Developer";
+    color: white;
+    animation: words 20s infinite;
+}
+
+.typing-text span::after{
+    content: "";
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid black;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+
+@keyframes cursor{
+    to{border-left: 3px solid #b74b4b;}
+}
+
+@keyframes typewriter-words{
+    0%, 18%{
+        content: "Web Developer";
+    }
+    22%, 40%{
+        content:"Editor";
+    }
+    44%, 62%{
+        content: "Designer";
+    }
+    66%, 84%{
+        content: "Java Developer";
+    }
+    88%, 100%{
+        content: "Game Developer";
+    }
+}
+
+@keyframes typing-text{
+    0%, 20%{
+        content: "Digital Artist";
+    }
+    21%, 40%{
+        content:"Software Developer";
+    }
+    41%, 60%{
+        content: "Game Developer";
+    }
+    61%, 80%{
+        content: "Web Designer";
+    }
+    81%, 100%{
+        content: "Video Editor";
+    }
+}
+
+.main-container .content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+    section .main-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    section .main-container .image {
+        flex: 0 0 70%;
+        height: 50vh;
+        max-width: 420px;
+    }
+
+    .main-container .content {
+        flex: 1 1 auto;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .main-container .content h1 {
+        font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+        line-height: 1.05;
+    }
+
+    .main-container .content .typewriter {
+        font-size: 1.6rem;
+    }
+
+    .main-container .content p {
+        margin: 0 auto;
+        max-width: 700px;
+    }
+}
+
+.main-container .content a,
+footer a {
+    color: #b74b4b;
+    text-decoration: underline;
+    transition: 0.3s linear;
+}
+
+.main-container .content a:hover,
+footer a:hover {
+    color: white;
+}
+
+footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    border-top: 1px solid #b74b4b;
+}
+
+@keyframes animate {
+    0%{
+        scale: 1;
+    }
+
+    50%{
+        scale: 1.05;
+    }
+
+    100%{
+        scale: 1;
+    }
+}
+
+.main-container .content{
+    color: white;
+}
+
+.content h1 {
+    font-size: clamp(1rem, 1rem + 5vw, 1.8rem);
+}
+
+.content h1 span {
+    color: #b74b4b;
+    text-shadow: 0 0 10px #b74b4b;
+}
+
+/*-------------------Social Media Links-----------------*/
+
+.social-links div a{
+    display: inline-flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.social-links div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+    flex-basis: 30%;
+    background: #070000;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-shadow: 0 0 5px #b74b4b;
+    transition: 0.5s;
+}
+
+.social-links div a {
+    font-size: 1.2rem;
+    color: #b74b4b;
+    text-decoration: none;
+    transition: 0.3s linear;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-links div a:hover {
+    color: white;
+    text-shadow: 0 0 10px #b74b4b;
+
+}
+
+.social-links div:hover{
+    box-shadow: 0 0 20px #b74b4b;
+    transform: translateY(-10px);
+}
+
+/* Social Media Section Styling */
+
+section.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    color: white;
+}
+
+section.content .content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section.content .title span {
+    font-size: clamp(2rem, 3.2vw + 1rem, 3rem);
+    font-weight: 700;
+    color: #b74b4b;
+    text-shadow: 0 0 10px #b74b4b;
+}
+
+section.content .text {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+section.content .topic {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: white;
+}
+
+section.content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Achievements Section Styling */
+
+section.achievements {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Skill Section Styling */
+
+section.skills .title span {
+    font-size: clamp(2rem, 3.2vw + 1rem, 3rem);
+    font-weight: 700;
+    color: #b74b4b;
+    text-shadow: 0 0 10px #b74b4b;
+}
+
+.skills {
+    background: black;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.skills .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Fix for invisible text: Make sure all text in this section is white */
+.skills .title span,
+.skills .text .topic,
+.skills .text p,
+.skills .experience .exp,
+.skills .box .topic,
+.skills .box .num {
+    color: white;
+}
+
+.skills .text {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+/* Container for the skill bars */
+.boxes {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Skill Box */
+.box {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.box .topic {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* The gray background track of the bar */
+.box .per {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: #2e2e2e; /* Dark gray track */
+    border-radius: 20px;
+    border: 1px solid #b74b4b; /* Optional border */
+    overflow: hidden; /* Ensures the inner bar doesn't spill out */
+}
+
+/* The text percentage (69%) sitting on top of the bar */
+.box .num {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+}
+
+/* The actual colored filling of the bar */
+.box .per .bar {
+    position: absolute;
+    height: 100%;
+    width: 0; /* Starts at 0 for animation */
+    background-color: #b74b4b;
+    border-radius: 20px;
+    /* Animation settings */
+    animation: fillBar 2s ease forwards;
+    box-shadow: 0 0 10px #b74b4b;
+}
+
+/* Keyframe to animate the width based on the CSS variable */
+@keyframes fillBar {
+    0% {
+        width: 0;
+    }
+    100% {
+        /* This reads the --width style from the HTML */
+        width: var(--width);
+    }
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+    .boxes {
+        width: 90%;
+    }
+}
